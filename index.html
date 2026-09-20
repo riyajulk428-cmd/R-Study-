@@ -6,135 +6,60 @@
 <title>R-Study</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
   font-family:Arial,sans-serif;
   background:#f4f6fb;
   color:#172033;
-  padding-bottom:80px;
+  padding-bottom:80px
 }
-
 .header{
   background:linear-gradient(135deg,#4f46e5,#7c3aed);
   color:white;
   padding:28px 20px 35px;
-  border-radius:0 0 30px 30px;
+  border-radius:0 0 30px 30px
 }
-
-.header h1{
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-.header p{
-  font-size:16px;
-  opacity:.9;
-}
-
-.container{
-  width:92%;
-  max-width:700px;
-  margin:auto;
-}
-
+.header h1{font-size:30px;margin-bottom:8px}
+.header p{font-size:16px;opacity:.9}
+.container{width:92%;max-width:700px;margin:auto}
 .welcome{
   background:white;
   margin-top:-25px;
   padding:22px;
   border-radius:22px;
-  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  box-shadow:0 8px 25px rgba(0,0,0,.08)
 }
-
-.welcome h2{
-  margin-bottom:8px;
-}
-
-.section-title{
-  margin:28px 0 15px;
-  font-size:24px;
-}
-
+.welcome h2{margin-bottom:8px}
+.section-title{margin:28px 0 15px;font-size:24px}
 .card{
   background:white;
   border-radius:18px;
   padding:18px;
   margin-bottom:15px;
-  box-shadow:0 5px 18px rgba(0,0,0,.06);
+  box-shadow:0 5px 18px rgba(0,0,0,.06)
 }
-
-.subject-card{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.subject-info h3{
-  margin-bottom:6px;
-}
-
-.subject-info p{
-  color:#6b7280;
-  font-size:14px;
-}
-
 .btn{
   border:none;
   padding:11px 16px;
   border-radius:12px;
   cursor:pointer;
   font-size:15px;
-  margin:4px;
+  margin:4px
 }
-
-.primary{
-  background:#4f46e5;
-  color:white;
-}
-
-.success{
-  background:#16a34a;
-  color:white;
-}
-
-.danger{
-  background:#ef4444;
-  color:white;
-}
-
-.secondary{
-  background:#e5e7eb;
-  color:#172033;
-}
-
+.primary{background:#4f46e5;color:white}
+.success{background:#16a34a;color:white}
+.danger{background:#ef4444;color:white}
+.secondary{background:#e5e7eb;color:#172033}
 input,select,textarea{
   width:100%;
   padding:13px;
   border:1px solid #d1d5db;
   border-radius:12px;
   margin:7px 0 12px;
-  font-size:15px;
-  outline:none;
+  font-size:15px
 }
-
-textarea{
-  min-height:90px;
-}
-
-label{
-  font-weight:bold;
-  display:block;
-  margin-top:8px;
-}
-
-.hidden{
-  display:none;
-}
-
+label{font-weight:bold;display:block;margin-top:8px}
+.hidden{display:none}
 .nav{
   position:fixed;
   bottom:0;
@@ -145,97 +70,59 @@ label{
   justify-content:space-around;
   padding:10px 5px;
   box-shadow:0 -4px 15px rgba(0,0,0,.1);
-  z-index:100;
+  z-index:100
 }
-
 .nav button{
   background:none;
   border:none;
   font-size:12px;
-  color:#555;
-  cursor:pointer;
+  color:#555
 }
-
-.nav span{
-  display:block;
-  font-size:22px;
-  margin-bottom:3px;
+.nav span{display:block;font-size:22px;margin-bottom:3px}
+.subject-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px
 }
-
-.timer{
-  text-align:center;
-}
-
-.time{
-  font-size:55px;
-  font-weight:bold;
-  margin:20px 0;
-  color:#4f46e5;
-}
-
-.timer-mode{
-  font-size:18px;
-  font-weight:bold;
-}
-
+.subject-info{flex:1}
+.subject-info h3{margin-bottom:6px}
+.subject-info p{color:#6b7280;font-size:14px}
 .progress-bg{
   width:100%;
   height:15px;
   background:#e5e7eb;
   border-radius:20px;
   overflow:hidden;
-  margin:12px 0;
+  margin:12px 0
 }
-
 .progress-fill{
   height:100%;
   background:#4f46e5;
   width:0%;
-  transition:.3s;
+  transition:.3s
 }
-
 .task{
   display:flex;
   align-items:center;
   gap:10px;
   padding:12px;
-  border-bottom:1px solid #eee;
+  border-bottom:1px solid #eee
 }
-
-.task input{
-  width:auto;
-  margin:0;
-}
-
-.completed{
-  text-decoration:line-through;
-  color:#888;
-}
-
-.quiz-option{
-  width:100%;
-  text-align:left;
-  margin:6px 0;
-}
-
-.quiz-question{
-  font-size:19px;
+.task input{width:auto;margin:0}
+.completed{text-decoration:line-through;color:#888}
+.time{
+  font-size:55px;
   font-weight:bold;
-  margin-bottom:15px;
+  margin:20px 0;
+  color:#4f46e5;
+  text-align:center
 }
-
-.score{
-  font-size:24px;
-  font-weight:bold;
-  text-align:center;
-  margin:15px;
-}
-
-.empty{
-  text-align:center;
-  color:#777;
-  padding:20px;
-}
+.timer{text-align:center}
+.empty{text-align:center;color:#777;padding:20px}
+.quiz-option{width:100%;text-align:left}
+.score{text-align:center;font-size:24px;font-weight:bold}
+.small{font-size:13px;color:#6b7280}
 </style>
 </head>
 
@@ -248,70 +135,738 @@ label{
 
 <div class="container">
 
-  <div class="welcome">
-    <h2>স্বাগতম! 👋</h2>
-    <p>আজকের পড়াশোনার পরিকল্পনা শুরু করি।</p>
+<div class="welcome">
+  <h2>স্বাগতম! 👋</h2>
+  <p>আজকের পড়াশোনার পরিকল্পনা শুরু করি।</p>
+</div>
+
+<!-- HOME -->
+<section id="home">
+
+<h2 class="section-title">📊 আজকের Progress</h2>
+
+<div class="card">
+  <p>সম্পন্ন Task</p>
+  <div class="progress-bg">
+    <div id="progressBar" class="progress-fill"></div>
   </div>
+  <p id="progressText">0% সম্পন্ন</p>
+</div>
 
-  <!-- HOME -->
-  <section id="home">
+<h2 class="section-title">📚 Subjects</h2>
 
-    <h2 class="section-title">📊 আজকের Progress</h2>
+<button class="btn primary" onclick="showSection('subjects');openSubjectForm()">
+➕ Subject যোগ করুন
+</button>
 
-    <div class="card">
-      <p>সম্পন্ন Task</p>
-      <div class="progress-bg">
-        <div id="progressBar" class="progress-fill"></div>
+<div id="homeSubjects"></div>
+
+</section>
+
+
+<!-- SUBJECTS -->
+<section id="subjects" class="hidden">
+
+<h2 class="section-title">📚 আমার Subjects</h2>
+
+<button class="btn primary" onclick="openSubjectForm()">
+➕ Add Subject
+</button>
+
+<div id="subjectForm" class="card hidden">
+
+<h3 id="subjectFormTitle">নতুন Subject</h3>
+
+<label>Subject Name</label>
+<input id="subjectName" placeholder="যেমন: গণিত">
+
+<label>Target</label>
+<input id="subjectTarget" placeholder="যেমন: Chapter 1-5">
+
+<button class="btn success" onclick="saveSubject()">Save</button>
+<button class="btn secondary" onclick="closeSubjectForm()">Cancel</button>
+
+</div>
+
+<div id="subjectList"></div>
+
+</section>
+
+
+<!-- SCHEDULE -->
+<section id="schedule" class="hidden">
+
+<h2 class="section-title">📅 Study Schedule</h2>
+
+<div class="card">
+
+<label>Subject</label>
+<select id="scheduleSubject"></select>
+
+<label>Date</label>
+<input type="date" id="scheduleDate">
+
+<label>Time</label>
+<input type="time" id="scheduleTime">
+
+<label>Study Topic</label>
+<input id="scheduleTopic" placeholder="যেমন: Chapter 2">
+
+<button class="btn primary" onclick="addSchedule()">
+➕ Schedule যোগ করুন
+</button>
+
+</div>
+
+<div id="scheduleList"></div>
+
+</section>
+
+
+<!-- TASK -->
+<section id="tasks" class="hidden">
+
+<h2 class="section-title">✅ Tasks</h2>
+
+<div class="card">
+
+<input id="taskInput" placeholder="আজ কী পড়বে?">
+
+<button class="btn primary" onclick="addTask()">
+➕ Task যোগ করুন
+</button>
+
+</div>
+
+<div id="taskList"></div>
+
+</section>
+
+
+<!-- TIMER -->
+<section id="timer" class="hidden">
+
+<h2 class="section-title">⏱️ Study Timer</h2>
+
+<div class="card timer">
+
+<div id="timerMode">Study Time</div>
+
+<div id="timeDisplay" class="time">25:00</div>
+
+<button class="btn primary" onclick="startTimer()">▶ Start</button>
+<button class="btn secondary" onclick="pauseTimer()">⏸ Pause</button>
+<button class="btn danger" onclick="resetTimer()">↻ Reset</button>
+
+<br>
+
+<button class="btn secondary" onclick="setStudy()">📚 Study 25m</button>
+<button class="btn secondary" onclick="setBreak()">☕ Break 5m</button>
+
+</div>
+
+</section>
+
+
+<!-- REMINDER -->
+<section id="reminder" class="hidden">
+
+<h2 class="section-title">🔔 Reminder</h2>
+
+<div class="card">
+
+<label>Reminder Time</label>
+<input type="time" id="reminderTime">
+
+<label>Message</label>
+<input id="reminderMessage" placeholder="পড়তে বসার সময় হয়েছে!">
+
+<button class="btn primary" onclick="setReminder()">
+🔔 Reminder Set
+</button>
+
+<p id="reminderStatus" class="small"></p>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+<section id="quiz" class="hidden">
+
+<h2 class="section-title">🧠 Quiz</h2>
+
+<div class="card">
+
+<label>Question</label>
+<textarea id="quizQuestion" placeholder="প্রশ্ন লিখুন"></textarea>
+
+<label>Option A</label>
+<input id="optionA">
+
+<label>Option B</label>
+<input id="optionB">
+
+<label>Option C</label>
+<input id="optionC">
+
+<label>Option D</label>
+<input id="optionD">
+
+<label>Correct Answer</label>
+<select id="correctAnswer">
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+</select>
+
+<button class="btn primary" onclick="addQuiz()">
+➕ Quiz যোগ করুন
+</button>
+
+</div>
+
+<div id="quizArea"></div>
+
+</section>
+
+</div>
+
+
+<!-- NAVIGATION -->
+<div class="nav">
+
+<button onclick="showSection('home')">
+<span>🏠</span>Home
+</button>
+
+<button onclick="showSection('subjects')">
+<span>📚</span>Subject
+</button>
+
+<button onclick="showSection('schedule')">
+<span>📅</span>Schedule
+</button>
+
+<button onclick="showSection('tasks')">
+<span>✅</span>Task
+</button>
+
+<button onclick="showSection('timer')">
+<span>⏱️</span>Timer
+</button>
+
+<button onclick="showSection('quiz')">
+<span>🧠</span>Quiz
+</button>
+
+</div>
+
+
+<script>
+
+let subjects = JSON.parse(localStorage.getItem("subjects") || "[]");
+let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+let schedules = JSON.parse(localStorage.getItem("schedules") || "[]");
+let quizzes = JSON.parse(localStorage.getItem("quizzes") || "[]");
+
+let editSubjectIndex = -1;
+
+function saveData(){
+  localStorage.setItem("subjects",JSON.stringify(subjects));
+  localStorage.setItem("tasks",JSON.stringify(tasks));
+  localStorage.setItem("schedules",JSON.stringify(schedules));
+  localStorage.setItem("quizzes",JSON.stringify(quizzes));
+}
+
+function showSection(id){
+
+  document.querySelectorAll("section").forEach(section=>{
+    section.classList.add("hidden");
+  });
+
+  document.getElementById(id).classList.remove("hidden");
+
+  if(id==="subjects") renderSubjects();
+  if(id==="schedule") renderSchedules();
+  if(id==="tasks") renderTasks();
+  if(id==="quiz") renderQuiz();
+}
+
+function openSubjectForm(index=-1){
+
+  editSubjectIndex=index;
+
+  document.getElementById("subjectForm").classList.remove("hidden");
+
+  if(index>=0){
+
+    document.getElementById("subjectFormTitle").innerText="Subject Edit করুন";
+    document.getElementById("subjectName").value=subjects[index].name;
+    document.getElementById("subjectTarget").value=subjects[index].target;
+
+  }else{
+
+    document.getElementById("subjectFormTitle").innerText="নতুন Subject";
+    document.getElementById("subjectName").value="";
+    document.getElementById("subjectTarget").value="";
+  }
+}
+
+function closeSubjectForm(){
+  document.getElementById("subjectForm").classList.add("hidden");
+}
+
+function saveSubject(){
+
+  let name=document.getElementById("subjectName").value.trim();
+  let target=document.getElementById("subjectTarget").value.trim();
+
+  if(!name){
+    alert("Subject Name লিখুন");
+    return;
+  }
+
+  if(editSubjectIndex>=0){
+
+    subjects[editSubjectIndex]={name,target};
+
+  }else{
+
+    subjects.push({
+      name:name,
+      target:target
+    });
+
+  }
+
+  saveData();
+  closeSubjectForm();
+  renderSubjects();
+  updateSubjectSelects();
+}
+
+function deleteSubject(index){
+
+  if(confirm("এই Subject মুছে ফেলবেন?")){
+    subjects.splice(index,1);
+    saveData();
+    renderSubjects();
+    updateSubjectSelects();
+  }
+}
+
+function renderSubjects(){
+
+  let list=document.getElementById("subjectList");
+  let home=document.getElementById("homeSubjects");
+
+  if(subjects.length===0){
+
+    list.innerHTML='<div class="empty">এখনো কোনো Subject নেই।</div>';
+    home.innerHTML="";
+
+    return;
+  }
+
+  list.innerHTML=subjects.map((s,i)=>`
+
+    <div class="card subject-card">
+
+      <div class="subject-info">
+        <h3>📚 ${escapeHTML(s.name)}</h3>
+        <p>🎯 ${escapeHTML(s.target || "Target সেট করা হয়নি")}</p>
       </div>
-      <p id="progressText">0% সম্পন্ন</p>
-    </div>
 
-    <h2 class="section-title">📚 Subjects</h2>
-
-    <button class="btn primary" onclick="showSection('subjects')">
-      ➕ Subject যোগ করুন
-    </button>
-
-    <div id="homeSubjects"></div>
-
-  </section>
-
-
-  <!-- SUBJECTS -->
-  <section id="subjects" class="hidden">
-
-    <h2 class="section-title">📚 আমার Subjects</h2>
-
-    <button class="btn primary" onclick="openSubjectForm()">
-      ➕ Add Subject
-    </button>
-
-    <div id="subjectForm" class="card hidden">
-
-      <h3 id="subjectFormTitle">নতুন Subject</h3>
-
-      <label>Subject Name</label>
-      <input id="subjectName" placeholder="যেমন: গণিত">
-
-      <label>Target</label>
-      <input id="subjectTarget" placeholder="যেমন: Chapter 1-5">
-
-      <button class="btn success" onclick="saveSubject()">Save</button>
-      <button class="btn secondary" onclick="closeSubjectForm()">Cancel</button>
+      <div>
+        <button class="btn secondary" onclick="openSubjectForm(${i})">✏️</button>
+        <button class="btn danger" onclick="deleteSubject(${i})">🗑️</button>
+      </div>
 
     </div>
 
-    <div id="subjectList"></div>
+  `).join("");
 
-  </section>
+  home.innerHTML=subjects.map(s=>`
+    <div class="card">
+      <h3>📚 ${escapeHTML(s.name)}</h3>
+      <p class="small">🎯 ${escapeHTML(s.target || "Target নেই")}</p>
+    </div>
+  `).join("");
+}
 
+function updateSubjectSelects(){
 
-  <!-- SCHEDULE -->
-  <section id="schedule" class="hidden">
+  let select=document.getElementById("scheduleSubject");
 
-    <h2 class="section-title">📅 Study Schedule</h2>
+  select.innerHTML='<option value="">Subject নির্বাচন করুন</option>';
+
+  subjects.forEach(s=>{
+    let option=document.createElement("option");
+    option.value=s.name;
+    option.textContent=s.name;
+    select.appendChild(option);
+  });
+}
+
+function addSchedule(){
+
+  let subject=document.getElementById("scheduleSubject").value;
+  let date=document.getElementById("scheduleDate").value;
+  let time=document.getElementById("scheduleTime").value;
+  let topic=document.getElementById("scheduleTopic").value.trim();
+
+  if(!subject || !date || !time || !topic){
+    alert("সব তথ্য পূরণ করুন");
+    return;
+  }
+
+  schedules.push({subject,date,time,topic});
+
+  saveData();
+
+  document.getElementById("scheduleTopic").value="";
+
+  renderSchedules();
+
+  alert("Schedule যোগ হয়েছে ✅");
+}
+
+function renderSchedules(){
+
+  let list=document.getElementById("scheduleList");
+
+  if(schedules.length===0){
+    list.innerHTML='<div class="empty">কোনো Schedule নেই।</div>';
+    return;
+  }
+
+  list.innerHTML=schedules.map((s,i)=>`
 
     <div class="card">
 
-      <label>Subject</label>
-      <select id="schedule
+      <h3>📚 ${escapeHTML(s.subject)}</h3>
+      <p>📅 ${s.date}</p>
+      <p>⏰ ${s.time}</p>
+      <p>📖 ${escapeHTML(s.topic)}</p>
+
+      <button class="btn danger" onclick="deleteSchedule(${i})">
+      🗑️ Delete
+      </button>
+
+    </div>
+
+  `).join("");
+}
+
+function deleteSchedule(index){
+
+  schedules.splice(index,1);
+  saveData();
+  renderSchedules();
+}
+
+
+function addTask(){
+
+  let text=document.getElementById("taskInput").value.trim();
+
+  if(!text){
+    alert("Task লিখুন");
+    return;
+  }
+
+  tasks.push({
+    text:text,
+    done:false
+  });
+
+  saveData();
+
+  document.getElementById("taskInput").value="";
+
+  renderTasks();
+  updateProgress();
+}
+
+function toggleTask(index){
+
+  tasks[index].done=!tasks[index].done;
+
+  saveData();
+  renderTasks();
+  updateProgress();
+}
+
+function deleteTask(index){
+
+  tasks.splice(index,1);
+
+  saveData();
+  renderTasks();
+  updateProgress();
+}
+
+function renderTasks(){
+
+  let list=document.getElementById("taskList");
+
+  if(tasks.length===0){
+    list.innerHTML='<div class="empty">কোনো Task নেই।</div>';
+    return;
+  }
+
+  list.innerHTML=tasks.map((t,i)=>`
+
+    <div class="card task">
+
+      <input type="checkbox"
+        ${t.done ? "checked":""}
+        onchange="toggleTask(${i})">
+
+      <span class="${t.done ? "completed":""}">
+        ${escapeHTML(t.text)}
+      </span>
+
+      <button class="btn danger" onclick="deleteTask(${i})">
+        🗑️
+      </button>
+
+    </div>
+
+  `).join("");
+}
+
+function updateProgress(){
+
+  let total=tasks.length;
+
+  let done=tasks.filter(t=>t.done).length;
+
+  let percent=total===0 ? 0 : Math.round((done/total)*100);
+
+  document.getElementById("progressBar").style.width=percent+"%";
+
+  document.getElementById("progressText").innerText=
+    percent+"% সম্পন্ন";
+}
+
+
+let timerSeconds=25*60;
+let timerInterval=null;
+let timerRunning=false;
+
+function updateTimer(){
+
+  let min=Math.floor(timerSeconds/60);
+  let sec=timerSeconds%60;
+
+  document.getElementById("timeDisplay").innerText=
+    String(min).padStart(2,"0")+":"+
+    String(sec).padStart(2,"0");
+}
+
+function startTimer(){
+
+  if(timerRunning)return;
+
+  timerRunning=true;
+
+  timerInterval=setInterval(()=>{
+
+    if(timerSeconds>0){
+
+      timerSeconds--;
+      updateTimer();
+
+    }else{
+
+      clearInterval(timerInterval);
+      timerRunning=false;
+
+      alert("⏰ সময় শেষ!");
+
+    }
+
+  },1000);
+}
+
+function pauseTimer(){
+
+  clearInterval(timerInterval);
+  timerRunning=false;
+}
+
+function resetTimer(){
+
+  pauseTimer();
+  timerSeconds=25*60;
+  document.getElementById("timerMode").innerText="Study Time";
+  updateTimer();
+}
+
+function setStudy(){
+
+  pauseTimer();
+  timerSeconds=25*60;
+  document.getElementById("timerMode").innerText="Study Time";
+  updateTimer();
+}
+
+function setBreak(){
+
+  pauseTimer();
+  timerSeconds=5*60;
+  document.getElementById("timerMode").innerText="Break Time ☕";
+  updateTimer();
+}
+
+
+let reminderTimer=null;
+
+function setReminder(){
+
+  let time=document.getElementById("reminderTime").value;
+  let message=document.getElementById("reminderMessage").value.trim();
+
+  if(!time || !message){
+    alert("Time এবং Message দিন");
+    return;
+  }
+
+  localStorage.setItem("reminderTime",time);
+  localStorage.setItem("reminderMessage",message);
+
+  document.getElementById("reminderStatus").innerText=
+    "🔔 Reminder সেট হয়েছে: "+time;
+
+  alert("Reminder সেট হয়েছে ✅");
+}
+
+
+function addQuiz(){
+
+  let question=document.getElementById("quizQuestion").value.trim();
+  let A=document.getElementById("optionA").value.trim();
+  let B=document.getElementById("optionB").value.trim();
+  let C=document.getElementById("optionC").value.trim();
+  let D=document.getElementById("optionD").value.trim();
+  let correct=document.getElementById("correctAnswer").value;
+
+  if(!question || !A || !B || !C || !D){
+    alert("সব Quiz তথ্য পূরণ করুন");
+    return;
+  }
+
+  quizzes.push({
+    question,
+    options:{A,B,C,D},
+    correct
+  });
+
+  saveData();
+
+  document.getElementById("quizQuestion").value="";
+  document.getElementById("optionA").value="";
+  document.getElementById("optionB").value="";
+  document.getElementById("optionC").value="";
+  document.getElementById("optionD").value="";
+
+  renderQuiz();
+
+  alert("Quiz যোগ হয়েছে 🧠");
+}
+
+
+function renderQuiz(){
+
+  let area=document.getElementById("quizArea");
+
+  if(quizzes.length===0){
+
+    area.innerHTML='<div class="empty">এখনো কোনো Quiz নেই।</div>';
+    return;
+  }
+
+  area.innerHTML=quizzes.map((q,i)=>`
+
+    <div class="card">
+
+      <div class="quiz-question">
+        ${i+1}. ${escapeHTML(q.question)}
+      </div>
+
+      <button class="btn secondary quiz-option"
+        onclick="checkAnswer(${i},'A')">
+        A. ${escapeHTML(q.options.A)}
+      </button>
+
+      <button class="btn secondary quiz-option"
+        onclick="checkAnswer(${i},'B')">
+        B. ${escapeHTML(q.options.B)}
+      </button>
+
+      <button class="btn secondary quiz-option"
+        onclick="checkAnswer(${i},'C')">
+        C. ${escapeHTML(q.options.C)}
+      </button>
+
+      <button class="btn secondary quiz-option"
+        onclick="checkAnswer(${i},'D')">
+        D. ${escapeHTML(q.options.D)}
+      </button>
+
+    </div>
+
+  `).join("");
+}
+
+function checkAnswer(index,answer){
+
+  if(answer===quizzes[index].correct){
+    alert("🎉 সঠিক উত্তর!");
+  }else{
+    alert("❌ ভুল উত্তর!");
+  }
+}
+
+
+function escapeHTML(text){
+
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* INITIAL LOAD */
+
+renderSubjects();
+renderTasks();
+renderSchedules();
+renderQuiz();
+updateSubjectSelects();
+updateProgress();
+updateTimer();
+
+let savedReminderTime=localStorage.getItem("reminderTime");
+let savedReminderMessage=localStorage.getItem("reminderMessage");
+
+if(savedReminderTime){
+
+  document.getElementById("reminderTime").value=savedReminderTime;
+  document.getElementById("reminderMessage").value=savedReminderMessage || "";
+
+  document.getElementById("reminderStatus").innerText=
+    "🔔 Reminder: "+savedReminderTime;
+}
+
+</script>
+
+</body>
+</html>
