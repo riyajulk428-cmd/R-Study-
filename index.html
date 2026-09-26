@@ -2,899 +2,2657 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>R-Study 2.0</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 :root{
-  --primary:#6c5ce7;
-  --primary2:#8e7cff;
-  --bg:#f5f6fb;
-  --card:#fff;
-  --text:#202124;
-  --muted:#73777d;
-  --border:#e4e6ed;
-  --danger:#e74c3c;
-  --success:#19a974;
-  --warning:#f39c12;
-  --shadow:0 8px 25px rgba(0,0,0,.07);
+ --primary:#6c5ce7;
+ --primary2:#8e7cff;
+ --bg:#f4f5fa;
+ --card:#fff;
+ --text:#202124;
+ --muted:#777b84;
+ --border:#e4e6ee;
+ --success:#16a085;
+ --danger:#e74c3c;
+ --warning:#f39c12;
+ --shadow:0 8px 25px rgba(0,0,0,.07);
 }
+
 body.dark{
-  --bg:#101116;
-  --card:#191b22;
-  --text:#f3f4f6;
-  --muted:#a5a8b0;
-  --border:#30333d;
-  --shadow:0 8px 25px rgba(0,0,0,.25);
+ --bg:#101116;
+ --card:#1b1d25;
+ --text:#f4f5f7;
+ --muted:#a7aab3;
+ --border:#30333d;
+ --shadow:0 8px 25px rgba(0,0,0,.25);
 }
+
+html{scroll-behavior:smooth}
+
 body{
-  font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  padding-bottom:80px;
-  transition:.2s;
+ font-family:Arial,"Noto Sans Bengali",sans-serif;
+ background:var(--bg);
+ color:var(--text);
+ min-height:100vh;
+ padding-bottom:100px;
 }
+
 button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0}
-.header{
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:#fff;
-  padding:24px 18px 28px;
-  border-radius:0 0 28px 28px;
+
+button{cursor:pointer}
+
+.top{
+ background:linear-gradient(135deg,var(--primary),var(--primary2));
+ color:white;
+ padding:18px 16px;
+ position:sticky;
+ top:0;
+ z-index:50;
+ box-shadow:0 4px 18px #0002;
 }
-.header-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
+
+.top-row{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ max-width:1000px;
+ margin:auto;
 }
+
 .logo{
-  font-size:27px;
-  font-weight:800;
+ font-size:24px;
+ font-weight:800;
 }
-.subtitle{opacity:.9;margin-top:5px;font-size:14px}
-.icon-btn{
-  width:42px;height:42px;border-radius:50%;
-  background:rgba(255,255,255,.18);
-  color:#fff;font-size:20px;
+
+.logo-small{
+ font-size:12px;
+ opacity:.85;
+ margin-top:3px;
 }
+
+.top-buttons{
+ display:flex;
+ gap:8px;
+}
+
+.round{
+ width:42px;
+ height:42px;
+ border:0;
+ border-radius:50%;
+ background:#ffffff22;
+ color:white;
+ font-size:20px;
+}
+
 .container{
-  max-width:1050px;
-  margin:auto;
-  padding:16px;
+ max-width:1000px;
+ margin:auto;
+ padding:18px;
 }
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:17px;
-  box-shadow:var(--shadow);
-}
-.card h3{margin-bottom:12px}
-.stat{
-  font-size:28px;
-  font-weight:800;
-  margin-top:5px;
-}
-.muted{color:var(--muted);font-size:13px}
-.progress{
-  height:9px;
-  background:var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:10px;
-}
-.progress span{
-  display:block;height:100%;
-  background:linear-gradient(90deg,var(--primary),var(--primary2));
-}
-.btn{
-  background:var(--primary);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:11px;
-  font-weight:700;
-}
-.btn.secondary{
-  background:var(--border);
-  color:var(--text);
-}
-.btn.danger{background:var(--danger)}
-.btn.success{background:var(--success)}
-.btn.warning{background:var(--warning)}
-.btn.small{padding:7px 10px;font-size:12px}
-input,textarea,select{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid var(--border);
-  border-radius:11px;
-  background:var(--card);
-  color:var(--text);
-  outline:none;
-}
-textarea{min-height:120px;resize:vertical}
-label{
-  display:block;
-  font-size:13px;
-  color:var(--muted);
-  margin:10px 0 5px;
-}
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-}
-.full{grid-column:1/-1}
-.row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.item{
-  border:1px solid var(--border);
-  padding:12px;
-  border-radius:13px;
-  margin-bottom:9px;
-}
-.item-top{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-.badge{
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:20px;
-  background:rgba(108,92,231,.12);
-  color:var(--primary);
-  font-size:11px;
-  font-weight:700;
-}
-.nav{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  background:var(--card);
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:center;
-  gap:4px;
-  z-index:50;
-  padding:8px;
-}
-.nav button{
-  background:none;
-  color:var(--muted);
-  padding:8px 10px;
-  border-radius:10px;
-  font-size:11px;
-}
-.nav button.active{
-  background:rgba(108,92,231,.12);
-  color:var(--primary);
-  font-weight:bold;
-}
+
 .page{display:none}
-.page.active{display:block}
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:18px 0 10px;
+.page.active{
+ display:block;
+ animation:appear .2s ease;
 }
-.timer{
-  text-align:center;
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(5px)}
+ to{opacity:1;transform:translateY(0)}
 }
-.timer-mode{
-  color:var(--primary);
-  font-weight:bold;
-  margin-bottom:8px;
+
+h1{
+ font-size:27px;
+ margin-bottom:5px;
 }
-.timer-display{
-  font-size:62px;
-  font-weight:800;
-  letter-spacing:2px;
-  margin:8px 0 18px;
+
+.sub{
+ color:var(--muted);
+ margin-bottom:18px;
 }
-.timer-circle{
-  width:260px;
-  height:260px;
-  margin:15px auto;
-  border-radius:50%;
-  border:12px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:13px;
 }
-.timer-controls{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.streak{
-  font-size:35px;
-}
-.empty{
-  text-align:center;
-  color:var(--muted);
-  padding:20px;
-}
-.calendar-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
-}
-.calendar{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:5px;
-}
-.cal-day{
-  min-height:55px;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:6px;
-  font-size:12px;
-}
-.cal-day.today{
-  border:2px solid var(--primary);
-}
-.cal-event{
-  background:rgba(108,92,231,.14);
-  color:var(--primary);
-  font-size:9px;
-  margin-top:3px;
-  padding:2px;
-  border-radius:4px;
-}
-.quiz-option{
-  display:block;
-  width:100%;
-  text-align:left;
-  margin:7px 0;
-  padding:12px;
-  background:var(--card);
-  border:1px solid var(--border);
-  color:var(--text);
-  border-radius:10px;
-}
-.quiz-option:hover{border-color:var(--primary)}
-.search-box{margin-bottom:12px}
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:75px;
-  transform:translateX(-50%);
-  background:#222;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:10px;
-  display:none;
-  z-index:100;
-  max-width:90%;
-}
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:80;
-  padding:18px;
-}
-.modal-box{
-  background:var(--card);
-  color:var(--text);
-  width:100%;
-  max-width:500px;
-  max-height:90vh;
-  overflow:auto;
-  border-radius:20px;
-  padding:20px;
-}
-.close{
-  float:right;
-  background:var(--border);
-  color:var(--text);
-  width:35px;height:35px;
-  border-radius:50%;
-}
+
 @media(min-width:700px){
-  .grid{grid-template-columns:repeat(4,1fr)}
-  .wide{grid-column:span 2}
+ .grid{grid-template-columns:repeat(4,1fr)}
 }
-@media(max-width:600px){
-  .form-grid{grid-template-columns:1fr}
-  .timer-display{font-size:48px}
-  .timer-circle{width:230px;height:230px}
-  .nav button{font-size:9px;padding:7px 5px}
+
+.card{
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:20px;
+ padding:18px;
+ margin-bottom:15px;
+ box-shadow:var(--shadow);
+}
+
+.stat-icon{font-size:25px}
+
+.stat-name{
+ color:var(--muted);
+ margin-top:5px;
+ font-size:15px;
+}
+
+.stat-number{
+ font-size:31px;
+ font-weight:800;
+ margin-top:4px;
+}
+
+.card-title{
+ font-size:20px;
+ font-weight:800;
+ margin-bottom:13px;
+}
+
+.quick{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+@media(min-width:650px){
+ .quick{grid-template-columns:repeat(4,1fr)}
+}
+
+.btn{
+ border:0;
+ border-radius:13px;
+ padding:13px 15px;
+ font-weight:700;
+ min-height:48px;
+}
+
+.primary{
+ background:linear-gradient(135deg,var(--primary),var(--primary2));
+ color:white;
+}
+
+.secondary{
+ background:#e6e8ee;
+ color:#24252a;
+}
+
+body.dark .secondary{
+ background:#2a2d36;
+ color:white;
+}
+
+.success{background:var(--success);color:white}
+.danger{background:var(--danger);color:white}
+.warning{background:var(--warning);color:white}
+
+.full{width:100%}
+
+input,textarea,select{
+ width:100%;
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
+ border-radius:12px;
+ padding:13px;
+ margin-bottom:10px;
+ outline:none;
+}
+
+textarea{
+ min-height:130px;
+ resize:vertical;
+}
+
+label{
+ display:block;
+ margin-bottom:7px;
+ font-size:14px;
+ color:var(--muted);
+}
+
+.row{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+}
+
+.item{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ padding:13px 0;
+ border-bottom:1px solid var(--border);
+}
+
+.item:last-child{border-bottom:0}
+
+.item-main{flex:1}
+
+.item-title{
+ font-weight:700;
+ font-size:16px;
+}
+
+.item-small{
+ color:var(--muted);
+ font-size:13px;
+ margin-top:4px;
+}
+
+.small{
+ border:0;
+ border-radius:9px;
+ padding:8px 10px;
+ background:var(--primary);
+ color:white;
+}
+
+.empty{
+ color:var(--muted);
+ text-align:center;
+ padding:25px 10px;
+}
+
+.progress{
+ height:13px;
+ border-radius:20px;
+ overflow:hidden;
+ background:var(--border);
+}
+
+.progress-bar{
+ height:100%;
+ width:0%;
+ background:linear-gradient(90deg,var(--primary),var(--primary2));
+ transition:.3s;
+}
+
+.timer{
+ text-align:center;
+ padding:20px 5px;
+}
+
+.timer-mode{
+ font-size:19px;
+ color:var(--primary);
+ font-weight:800;
+}
+
+.clock{
+ font-size:70px;
+ font-weight:900;
+ margin:15px 0;
+ letter-spacing:2px;
+}
+
+.timer-buttons{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px;
+}
+
+.timer-settings{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:10px;
+}
+
+.big-number{
+ font-size:46px;
+ font-weight:900;
+ color:var(--primary);
+}
+
+.center{text-align:center}
+
+.nav{
+ position:fixed;
+ left:0;
+ right:0;
+ bottom:0;
+ height:86px;
+ background:var(--card);
+ border-top:1px solid var(--border);
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ z-index:100;
+ box-shadow:0 -5px 20px #0001;
+}
+
+.nav-btn{
+ border:0;
+ background:transparent;
+ color:var(--muted);
+ min-width:55px;
+ padding:7px 3px;
+ font-size:12px;
+}
+
+.nav-icon{
+ display:block;
+ font-size:25px;
+ line-height:28px;
+ margin-bottom:2px;
+}
+
+.nav-btn.active{
+ color:var(--primary);
+ font-weight:800;
+}
+
+.more-menu{
+ position:fixed;
+ right:10px;
+ bottom:92px;
+ width:230px;
+ max-height:70vh;
+ overflow:auto;
+ background:var(--card);
+ border:1px solid var(--border);
+ border-radius:18px;
+ padding:10px;
+ box-shadow:0 12px 35px #0003;
+ z-index:110;
+ display:none;
+}
+
+.more-menu.show{display:block}
+
+.more-item{
+ width:100%;
+ text-align:left;
+ border:0;
+ background:transparent;
+ color:var(--text);
+ padding:13px;
+ border-radius:10px;
+}
+
+.more-item:hover{background:var(--bg)}
+
+.toast{
+ position:fixed;
+ left:50%;
+ bottom:100px;
+ transform:translate(-50%,20px);
+ background:#222;
+ color:white;
+ padding:12px 18px;
+ border-radius:12px;
+ opacity:0;
+ pointer-events:none;
+ transition:.25s;
+ z-index:200;
+}
+
+.toast.show{
+ opacity:1;
+ transform:translate(-50%,0);
+}
+
+.exam-box{
+ background:linear-gradient(135deg,var(--primary),var(--primary2));
+ color:white;
+ border-radius:18px;
+ padding:20px;
+}
+
+.exam-days{
+ font-size:45px;
+ font-weight:900;
+}
+
+.calendar{
+ display:grid;
+ grid-template-columns:repeat(7,1fr);
+ gap:5px;
+}
+
+.cal-head{
+ text-align:center;
+ color:var(--muted);
+ font-size:12px;
+ padding:6px 0;
+}
+
+.cal-day{
+ border:1px solid var(--border);
+ background:var(--bg);
+ min-height:42px;
+ border-radius:8px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:13px;
+}
+
+.cal-today{
+ background:var(--primary);
+ color:white;
+ font-weight:800;
+}
+
+.quiz-option{
+ width:100%;
+ text-align:left;
+ margin:6px 0;
+ border:1px solid var(--border);
+ background:var(--bg);
+ color:var(--text);
+ border-radius:11px;
+ padding:12px;
+}
+
+.quiz-option.correct{
+ background:#dff7ed;
+ border-color:var(--success);
+ color:#087653;
+}
+
+.quiz-option.wrong{
+ background:#ffe5e2;
+ border-color:var(--danger);
+ color:#a3291d;
+}
+
+body.dark .quiz-option.correct{
+ background:#153c30;
+ color:#8ee7c5;
+}
+
+body.dark .quiz-option.wrong{
+ background:#48201c;
+ color:#ffaaa2;
+}
+
+.tag{
+ display:inline-block;
+ padding:5px 9px;
+ border-radius:20px;
+ background:var(--bg);
+ color:var(--muted);
+ font-size:12px;
+}
+
+hr{
+ border:0;
+ border-top:1px solid var(--border);
+ margin:15px 0;
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="header-top">
-    <div>
-      <div class="logo">📚 R-Study 2.0</div>
-      <div class="subtitle">Plan • Focus • Progress</div>
-    </div>
-    <button class="icon-btn" onclick="toggleDark()" id="darkBtn">🌙</button>
+<header class="top">
+ <div class="top-row">
+  <div>
+   <div class="logo">📚 R-Study 2.0</div>
+   <div class="logo-small">Plan • Focus • Progress</div>
   </div>
+
+  <div class="top-buttons">
+   <button class="round" onclick="showPage('search')">🔍</button>
+   <button class="round" onclick="toggleDark()">🌙</button>
+  </div>
+ </div>
 </header>
+
 
 <main class="container">
 
-<!-- DASHBOARD -->
+<!-- ================= DASHBOARD ================= -->
+
 <section id="dashboard" class="page active">
-  <div class="section-title">
-    <h2>🏠 Dashboard</h2>
-    <span class="muted" id="todayText"></span>
-  </div>
 
-  <div class="grid">
-    <div class="card">
-      <div class="muted">📚 Subjects</div>
-      <div class="stat" id="statSubjects">0</div>
-    </div>
-    <div class="card">
-      <div class="muted">✅ Tasks</div>
-      <div class="stat" id="statTasks">0</div>
-    </div>
-    <div class="card">
-      <div class="muted">⏱️ Study Minutes</div>
-      <div class="stat" id="statMinutes">0</div>
-    </div>
-    <div class="card">
-      <div class="muted">🔥 Streak</div>
-      <div class="stat" id="statStreak">0</div>
-    </div>
-  </div>
+<h1>🏠 Dashboard</h1>
+<p class="sub">আজকের পড়াশোনার অবস্থা</p>
 
-  <div class="grid" style="margin-top:14px">
-    <div class="card wide">
-      <h3>🎯 Today's Progress</h3>
-      <div id="todayProgressText">0%</div>
-      <div class="progress"><span id="todayProgressBar" style="width:0%"></span></div>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <h3>⏳ Exam Countdown</h3>
-      <div id="examCountdown">No exam set</div>
-    </div>
+ <div class="card">
+  <div class="stat-icon">📚</div>
+  <div class="stat-name">Subjects</div>
+  <div class="stat-number" id="dSubjects">0</div>
+ </div>
 
-    <div class="card">
-      <h3>🏆 Achievement</h3>
-      <div id="achievementText">Start studying to unlock achievements!</div>
-    </div>
-  </div>
+ <div class="card">
+  <div class="stat-icon">✅</div>
+  <div class="stat-name">Tasks</div>
+  <div class="stat-number" id="dTasks">0</div>
+ </div>
 
-  <div class="section-title">
-    <h3>⚡ Quick Actions</h3>
-  </div>
+ <div class="card">
+  <div class="stat-icon">⏱️</div>
+  <div class="stat-name">Study Minutes</div>
+  <div class="stat-number" id="dMinutes">0</div>
+ </div>
 
-  <div class="card">
-    <div class="row">
-      <button class="btn" onclick="showPage('timer')">▶️ Start Timer</button>
-      <button class="btn secondary" onclick="showPage('tasks')">✅ Tasks</button>
-      <button class="btn secondary" onclick="showPage('subjects')">📚 Subjects</button>
-      <button class="btn secondary" onclick="showPage('notes')">📝 Notes</button>
-    </div>
-  </div>
+ <div class="card">
+  <div class="stat-icon">🔥</div>
+  <div class="stat-name">Streak</div>
+  <div class="stat-number" id="dStreak">0</div>
+ </div>
 
-  <div class="section-title">
-    <h3>📈 Daily Report</h3>
-  </div>
+</div>
 
-  <div class="card" id="dailyReport"></div>
+
+<div class="card">
+ <div class="card-title">🎯 Today's Progress</div>
+
+ <div class="progress">
+  <div class="progress-bar" id="dProgress"></div>
+ </div>
+
+ <p style="margin-top:8px" id="dProgressText">0% complete</p>
+</div>
+
+
+<div class="card">
+ <div class="card-title">⏰ Exam Countdown</div>
+
+ <div id="dashboardExam">
+  No exam set
+ </div>
+
+ <button class="btn secondary full" style="margin-top:12px"
+ onclick="showPage('exam')">
+ Set Exam
+ </button>
+</div>
+
+
+<div class="card">
+ <div class="card-title">🏆 Achievement</div>
+ <div id="dAchievement">
+  Start studying to unlock achievements!
+ </div>
+</div>
+
+
+<div class="card">
+ <div class="card-title">⚡ Quick Actions</div>
+
+ <div class="quick">
+
+  <button class="btn primary" onclick="showPage('timer')">
+   ▶️ Start Timer
+  </button>
+
+  <button class="btn secondary" onclick="showPage('tasks')">
+   ✅ Tasks
+  </button>
+
+  <button class="btn secondary" onclick="showPage('subjects')">
+   📚 Subjects
+  </button>
+
+  <button class="btn secondary" onclick="showPage('notes')">
+   📝 Notes
+  </button>
+
+ </div>
+</div>
+
+
+<div class="card">
+ <div class="card-title">📈 Daily Report</div>
+ <p id="dashboardReport">আজ এখনো কোনো Study Session নেই।</p>
+</div>
+
 </section>
 
 
-<!-- SUBJECTS -->
+<!-- ================= SUBJECT ================= -->
+
 <section id="subjects" class="page">
-  <div class="section-title">
-    <h2>📚 Subjects</h2>
-  </div>
 
-  <div class="card">
-    <div class="form-grid">
-      <div>
-        <label>Subject Name</label>
-        <input id="subjectName" placeholder="যেমন: গণিত">
-      </div>
-      <div>
-        <label>Target</label>
-        <input id="subjectTarget" placeholder="যেমন: Chapter 5">
-      </div>
-      <div>
-        <label>Daily Target (minutes)</label>
-        <input id="subjectMinutes" type="number" value="30">
-      </div>
-      <div style="display:flex;align-items:end">
-        <button class="btn" style="width:100%" onclick="addSubject()">➕ Add Subject</button>
-      </div>
-    </div>
-  </div>
+<h1>📚 Subjects</h1>
+<p class="sub">Subject এবং Target যোগ করুন</p>
 
-  <div class="section-title">
-    <h3>My Subjects</h3>
-  </div>
-  <div id="subjectList"></div>
+<div class="card">
+
+ <input id="subjectName" placeholder="Subject name">
+
+ <input id="subjectTarget"
+ placeholder="Target যেমন: Chapter 5">
+
+ <button class="btn primary full" onclick="addSubject()">
+ ➕ Add Subject
+ </button>
+
+</div>
+
+<div class="card">
+ <div class="card-title">📚 My Subjects</div>
+ <div id="subjectList"></div>
+</div>
+
 </section>
 
 
-<!-- SCHEDULE -->
+<!-- ================= SCHEDULE ================= -->
+
 <section id="schedule" class="page">
-  <div class="section-title">
-    <h2>📅 Schedule</h2>
+
+<h1>📅 Schedule</h1>
+<p class="sub">পড়াশোনার সময়সূচি তৈরি করুন</p>
+
+<div class="card">
+
+ <input id="scheduleTitle" placeholder="যেমন: Math Study">
+
+ <div class="row">
+
+  <div>
+   <label>Date</label>
+   <input type="date" id="scheduleDate">
   </div>
 
-  <div class="card">
-    <div class="form-grid">
-      <div>
-        <label>Subject</label>
-        <select id="scheduleSubject"></select>
-      </div>
-      <div>
-        <label>Date</label>
-        <input id="scheduleDate" type="date">
-      </div>
-      <div>
-        <label>Start Time</label>
-        <input id="scheduleTime" type="time">
-      </div>
-      <div>
-        <label>Duration (minutes)</label>
-        <input id="scheduleDuration" type="number" value="60">
-      </div>
-      <div class="full">
-        <label>Topic</label>
-        <input id="scheduleTopic" placeholder="আজ কী পড়বে?">
-      </div>
-      <div class="full">
-        <button class="btn" onclick="addSchedule()">➕ Add Schedule</button>
-      </div>
-    </div>
+  <div>
+   <label>Time</label>
+   <input type="time" id="scheduleTime">
   </div>
 
-  <div id="scheduleList" style="margin-top:15px"></div>
+ </div>
+
+ <button class="btn primary full" onclick="addSchedule()">
+ ➕ Add Schedule
+ </button>
+
+</div>
+
+<div class="card">
+ <div class="card-title">📅 My Schedule</div>
+ <div id="scheduleList"></div>
+</div>
+
 </section>
 
 
-<!-- TASKS -->
+<!-- ================= TASK ================= -->
+
 <section id="tasks" class="page">
-  <div class="section-title">
-    <h2>✅ Tasks</h2>
-  </div>
 
-  <div class="card">
-    <div class="form-grid">
-      <div class="full">
-        <label>Task</label>
-        <input id="taskText" placeholder="যেমন: গণিতের ২০টি অংক">
-      </div>
-      <div>
-        <label>Subject</label>
-        <select id="taskSubject"></select>
-      </div>
-      <div>
-        <label>Due Date</label>
-        <input id="taskDate" type="date">
-      </div>
-      <div>
-        <label>Priority</label>
-        <select id="taskPriority">
-          <option>Normal</option>
-          <option>High</option>
-          <option>Low</option>
-        </select>
-      </div>
-      <div style="display:flex;align-items:end">
-        <button class="btn" style="width:100%" onclick="addTask()">➕ Add Task</button>
-      </div>
-    </div>
-  </div>
+<h1>✅ Tasks</h1>
+<p class="sub">আজকের কাজগুলো লিখুন</p>
 
-  <div id="taskList" style="margin-top:15px"></div>
+<div class="card">
+
+ <input id="taskInput" placeholder="যেমন: Physics Chapter 2 পড়া">
+
+ <button class="btn primary full" onclick="addTask()">
+ ➕ Add Task
+ </button>
+
+</div>
+
+<div class="card">
+ <div class="card-title">📋 Task List</div>
+ <div id="taskList"></div>
+</div>
+
 </section>
 
 
-<!-- TIMER -->
+<!-- ================= TIMER ================= -->
+
 <section id="timer" class="page">
-  <div class="section-title">
-    <h2>⏱️ Study Timer</h2>
+
+<h1>⏱️ Study Timer</h1>
+<p class="sub">নিজের মতো Study ও Break Time সেট করুন</p>
+
+<div class="card timer">
+
+ <div class="timer-mode" id="timerMode">
+ 📚 STUDY
+ </div>
+
+ <div class="clock" id="timerDisplay">
+ 25:00
+ </div>
+
+ <div class="timer-buttons">
+
+  <button class="btn success" onclick="startTimer()">
+   ▶ Start
+  </button>
+
+  <button class="btn secondary" onclick="pauseTimer()">
+   ⏸ Pause
+  </button>
+
+  <button class="btn danger" onclick="resetTimer()">
+   ↻ Reset
+  </button>
+
+ </div>
+
+ <button class="btn primary full" style="margin-top:10px"
+ onclick="skipTimer()">
+ ⏭️ Skip / Next
+ </button>
+
+</div>
+
+
+<div class="card">
+
+ <div class="card-title">⚙️ Timer Settings</div>
+
+ <div class="timer-settings">
+
+  <div>
+   <label>Study Minutes</label>
+   <input type="number" id="studyInput"
+   min="1" max="180" value="25">
   </div>
 
-  <div class="card timer">
-    <div class="timer-mode" id="timerMode">STUDY TIME</div>
-
-    <div class="timer-circle">
-      <div class="timer-display" id="timerDisplay">25:00</div>
-    </div>
-
-    <div class="form-grid">
-      <div>
-        <label>Study Minutes</label>
-        <input id="studyMinutes" type="number" min="1" value="25">
-      </div>
-      <div>
-        <label>Break Minutes</label>
-        <input id="breakMinutes" type="number" min="1" value="5">
-      </div>
-    </div>
-
-    <br>
-
-    <label>
-      <input type="checkbox" id="autoCycle" checked style="width:auto">
-      Auto Cycle
-    </label>
-
-    <label>
-      <input type="checkbox" id="voiceEnabled" checked style="width:auto">
-      বাংলা Voice
-    </label>
-
-    <div class="timer-controls">
-      <button class="btn success" onclick="startTimer()">▶️ Start</button>
-      <button class="btn warning" onclick="pauseTimer()">⏸️ Pause</button>
-      <button class="btn secondary" onclick="resetTimer()">🔄 Reset</button>
-      <button class="btn secondary" onclick="skipTimer()">⏭️ Skip</button>
-    </div>
-
-    <p class="muted" style="margin-top:15px">
-      Timer চালু থাকলে App minimize করলেও সময় হিসাব রাখার চেষ্টা করবে।
-    </p>
+  <div>
+   <label>Break Minutes</label>
+   <input type="number" id="breakInput"
+   min="1" max="60" value="5">
   </div>
+
+ </div>
+
+ <button class="btn primary full"
+ onclick="saveTimerSettings()">
+ 💾 Save Settings
+ </button>
+
+ <br><br>
+
+ <label>
+  <input type="checkbox" id="autoCycle"
+  checked style="width:auto">
+  🔄 Auto Cycle Study → Break → Study
+ </label>
+
+</div>
+
 </section>
 
 
-<!-- QUIZ -->
+<!-- ================= QUIZ ================= -->
+
 <section id="quiz" class="page">
-  <div class="section-title">
-    <h2>🧠 Quiz</h2>
-  </div>
 
-  <div class="card">
-    <div id="quizBox"></div>
-  </div>
+<h1>🧠 Quiz</h1>
+<p class="sub">নিজেকে পরীক্ষা করুন</p>
+
+<div class="card">
+
+ <div id="quizArea"></div>
+
+ <button class="btn primary full"
+ id="nextQuizBtn"
+ onclick="nextQuiz()">
+ Next Question
+ </button>
+
+</div>
+
+<div class="card center">
+ <div>Score</div>
+ <div class="big-number" id="quizScore">0</div>
+</div>
+
 </section>
 
 
-<!-- PROGRESS -->
-<section id="progress" class="page">
-  <div class="section-title">
-    <h2>📊 Progress</h2>
-  </div>
+<!-- ================= REMINDER ================= -->
 
-  <div class="grid">
-    <div class="card">
-      <div class="muted">Total Study</div>
-      <div class="stat" id="totalStudy">0 min</div>
-    </div>
-    <div class="card">
-      <div class="muted">Completed Tasks</div>
-      <div class="stat" id="completedTasks">0</div>
-    </div>
-    <div class="card">
-      <div class="muted">Study Sessions</div>
-      <div class="stat" id="sessionCount">0</div>
-    </div>
-    <div class="card">
-      <div class="muted">🔥 Streak</div>
-      <div class="stat" id="progressStreak">0 days</div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:15px">
-    <h3>Subject Progress</h3>
-    <div id="subjectProgress"></div>
-  </div>
-</section>
-
-
-<!-- REPORT -->
-<section id="report" class="page">
-  <div class="section-title">
-    <h2>📈 Daily Report</h2>
-  </div>
-
-  <div class="card">
-    <div id="reportDetails"></div>
-  </div>
-
-  <div class="card" style="margin-top:15px">
-    <h3>🔥 Study Streak</h3>
-    <div class="streak" id="bigStreak">🔥 0</div>
-    <p class="muted">প্রতিদিন অন্তত একটি Study Session সম্পূর্ণ করার চেষ্টা করো।</p>
-  </div>
-
-  <div class="card" style="margin-top:15px">
-    <h3>🏆 Achievements</h3>
-    <div id="achievementList"></div>
-  </div>
-</section>
-
-
-<!-- NOTES -->
-<section id="notes" class="page">
-  <div class="section-title">
-    <h2>📝 Notes</h2>
-  </div>
-
-  <div class="card">
-    <label>Note Title</label>
-    <input id="noteTitle" placeholder="নোটের নাম">
-
-    <label>Note</label>
-    <textarea id="noteText" placeholder="এখানে তোমার নোট লিখো..."></textarea>
-
-    <br>
-    <button class="btn" onclick="addNote()">💾 Save Note</button>
-  </div>
-
-  <div id="noteList" style="margin-top:15px"></div>
-</section>
-
-
-<!-- SEARCH -->
-<section id="search" class="page">
-  <div class="section-title">
-    <h2>🔍 Search</h2>
-  </div>
-
-  <div class="card">
-    <input class="search-box" id="searchInput"
-      placeholder="Subject, Task, Note, Schedule খুঁজুন..."
-      oninput="searchAll()">
-    <div id="searchResults"></div>
-  </div>
-</section>
-
-
-<!-- REMINDER -->
 <section id="reminder" class="page">
-  <div class="section-title">
-    <h2>🔔 Reminder</h2>
-  </div>
 
-  <div class="card">
-    <div class="form-grid">
-      <div class="full">
-        <label>Reminder Text</label>
-        <input id="reminderText" placeholder="যেমন: এখন পড়তে বসো">
-      </div>
-      <div>
-        <label>Date</label>
-        <input id="reminderDate" type="date">
-      </div>
-      <div>
-        <label>Time</label>
-        <input id="reminderTime" type="time">
-      </div>
-      <div class="full">
-        <button class="btn" onclick="addReminder()">🔔 Add Reminder</button>
-      </div>
-    </div>
-  </div>
+<h1>🔔 Reminder</h1>
+<p class="sub">পড়ার জন্য Reminder সেট করুন</p>
 
-  <div id="reminderList" style="margin-top:15px"></div>
+<div class="card">
+
+ <input id="reminderText"
+ placeholder="Reminder message">
+
+ <div class="row">
+
+  <input type="date" id="reminderDate">
+
+  <input type="time" id="reminderTime">
+
+ </div>
+
+ <button class="btn primary full"
+ onclick="addReminder()">
+ 🔔 Add Reminder
+ </button>
+
+</div>
+
+<div class="card">
+ <div class="card-title">🔔 Reminders</div>
+ <div id="reminderList"></div>
+</div>
+
 </section>
 
 
-<!-- CALENDAR -->
+<!-- ================= PROGRESS ================= -->
+
+<section id="progress" class="page">
+
+<h1>📊 Progress</h1>
+<p class="sub">আপনার পড়াশোনার অগ্রগতি</p>
+
+<div class="card center">
+
+ <div class="card-title">Today's Study</div>
+
+ <div class="big-number" id="pMinutes">0</div>
+
+ <p class="sub">minutes</p>
+
+ <div class="progress">
+  <div class="progress-bar" id="pBar"></div>
+ </div>
+
+ <p style="margin-top:10px" id="pPercent">0%</p>
+
+</div>
+
+<div class="card center">
+
+ <div class="card-title">🔥 Study Streak</div>
+
+ <div class="big-number" id="pStreak">0</div>
+
+ <p>days</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= REPORT ================= -->
+
+<section id="report" class="page">
+
+<h1>📈 Daily Report</h1>
+<p class="sub">আজকের সম্পূর্ণ রিপোর্ট</p>
+
+<div class="card">
+
+ <div class="card-title">📅 Today</div>
+
+ <p>📚 Subjects: <b id="rSubjects">0</b></p>
+ <br>
+ <p>✅ Completed Tasks: <b id="rTasks">0</b></p>
+ <br>
+ <p>⏱️ Study Minutes: <b id="rMinutes">0</b></p>
+ <br>
+ <p>🔥 Streak: <b id="rStreak">0</b> days</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= ACHIEVEMENT ================= -->
+
+<section id="achievement" class="page">
+
+<h1>🏆 Achievement</h1>
+<p class="sub">আপনার অর্জন</p>
+
+<div class="card" id="achievementList"></div>
+
+</section>
+
+
+<!-- ================= NOTES ================= -->
+
+<section id="notes" class="page">
+
+<h1>📝 Notes</h1>
+<p class="sub">গুরুত্বপূর্ণ বিষয় লিখে রাখুন</p>
+
+<div class="card">
+
+ <input id="noteTitle" placeholder="Note title">
+
+ <textarea id="noteText"
+ placeholder="আপনার Note লিখুন..."></textarea>
+
+ <button class="btn primary full"
+ onclick="addNote()">
+ 💾 Save Note
+ </button>
+
+</div>
+
+<div class="card">
+ <div class="card-title">📝 Saved Notes</div>
+ <div id="noteList"></div>
+</div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section id="search" class="page">
+
+<h1>🔍 Search</h1>
+<p class="sub">সবকিছুর মধ্যে Search করুন</p>
+
+<div class="card">
+
+ <input id="searchInput"
+ placeholder="Subject, Task, Note..."
+ oninput="searchAll()">
+
+</div>
+
+<div class="card">
+ <div id="searchResults"></div>
+</div>
+
+</section>
+
+
+<!-- ================= CALENDAR ================= -->
+
 <section id="calendar" class="page">
-  <div class="section-title">
-    <h2>📅 Calendar</h2>
-  </div>
 
-  <div class="card">
-    <div class="calendar-head">
-      <button class="btn secondary small" onclick="changeMonth(-1)">←</button>
-      <strong id="calendarTitle"></strong>
-      <button class="btn secondary small" onclick="changeMonth(1)">→</button>
-    </div>
+<h1>📅 Calendar</h1>
+<p class="sub">আজকের তারিখ এবং মাস</p>
 
-    <div class="calendar" id="calendarGrid"></div>
-  </div>
+<div class="card">
+
+ <div class="center">
+  <div class="big-number" id="calendarMonth"></div>
+ </div>
+
+ <hr>
+
+ <div class="calendar" id="calendarBox"></div>
+
+</div>
+
 </section>
 
 
-<!-- EXAM -->
+<!-- ================= EXAM ================= -->
+
 <section id="exam" class="page">
-  <div class="section-title">
-    <h2>⏳ Exam Countdown</h2>
-  </div>
 
-  <div class="card">
-    <label>Exam Name</label>
-    <input id="examName" placeholder="যেমন: SSC Mathematics">
+<h1>⏰ Exam Countdown</h1>
+<p class="sub">পরীক্ষার তারিখ সেট করুন</p>
 
-    <label>Exam Date</label>
-    <input id="examDate" type="datetime-local">
+<div class="card">
 
-    <br>
-    <button class="btn" onclick="saveExam()">💾 Save Exam</button>
-    <button class="btn danger" onclick="removeExam()">Delete</button>
-  </div>
+ <input id="examName"
+ placeholder="Exam name">
 
-  <div class="card" style="margin-top:15px;text-align:center">
-    <h2 id="examNameShow">No Exam</h2>
-    <div class="stat" id="examBigCountdown">--</div>
-  </div>
+ <input type="date" id="examDate">
+
+ <button class="btn primary full"
+ onclick="saveExam()">
+ 💾 Save Exam
+ </button>
+
+</div>
+
+<div class="exam-box" id="examBox">
+ No exam set
+</div>
+
 </section>
+
 
 </main>
 
 
-<!-- BOTTOM NAV -->
+<!-- ================= MORE MENU ================= -->
+
+<div class="more-menu" id="moreMenu">
+
+<button class="more-item" onclick="goMore('schedule')">
+ 📅 Schedule
+</button>
+
+<button class="more-item" onclick="goMore('quiz')">
+ 🧠 Quiz
+</button>
+
+<button class="more-item" onclick="goMore('reminder')">
+ 🔔 Reminder
+</button>
+
+<button class="more-item" onclick="goMore('report')">
+ 📈 Daily Report
+</button>
+
+<button class="more-item" onclick="goMore('achievement')">
+ 🏆 Achievement
+</button>
+
+<button class="more-item" onclick="goMore('calendar')">
+ 📅 Calendar
+</button>
+
+<button class="more-item" onclick="goMore('exam')">
+ ⏰ Exam Countdown
+</button>
+
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
 <nav class="nav">
-  <button class="active" onclick="showPage('dashboard',this)">🏠<br>Home</button>
-  <button onclick="showPage('subjects',this)">📚<br>Subject</button>
-  <button onclick="showPage('tasks',this)">✅<br>Task</button>
-  <button onclick="showPage('timer',this)">⏱️<br>Timer</button>
-  <button onclick="showPage('progress',this)">📊<br>Progress</button>
-  <button onclick="showPage('notes',this)">📝<br>Notes</button>
-  <button onclick="showPage('search',this)">🔍<br>Search</button>
+
+<button class="nav-btn active"
+onclick="showPage('dashboard',this)">
+ <span class="nav-icon">🏠</span>
+ Home
+</button>
+
+<button class="nav-btn"
+onclick="showPage('subjects',this)">
+ <span class="nav-icon">📚</span>
+ Subject
+</button>
+
+<button class="nav-btn"
+onclick="showPage('tasks',this)">
+ <span class="nav-icon">✅</span>
+ Task
+</button>
+
+<button class="nav-btn"
+onclick="showPage('timer',this)">
+ <span class="nav-icon">⏱️</span>
+ Timer
+</button>
+
+<button class="nav-btn"
+onclick="showPage('progress',this)">
+ <span class="nav-icon">📊</span>
+ Progress
+</button>
+
+<button class="nav-btn"
+onclick="showPage('notes',this)">
+ <span class="nav-icon">📝</span>
+ Notes
+</button>
+
+<button class="nav-btn"
+onclick="toggleMore()">
+ <span class="nav-icon">☰</span>
+ More
+</button>
+
 </nav>
+
 
 <div class="toast" id="toast"></div>
 
 
 <script>
-/* =========================================================
-   R-STUDY 2.0
-   LocalStorage based study application
-========================================================= */
 
-const KEY="R_STUDY_2_DATA";
+/* =========================================
+   R-STUDY 2.0 DATA
+========================================= */
+
+const KEY="R_STUDY_FINAL_2";
 
 let data={
-  subjects:[],
-  tasks:[],
-  schedules:[],
-  notes:[],
-  reminders:[],
-  studySessions:[],
-  quizHistory:[],
-  exam:null,
-  dark:false
+ subjects:[],
+ tasks:[],
+ schedules:[],
+ notes:[],
+ reminders:[],
+ studyMinutes:0,
+ streak:0,
+ lastStudy:"",
+ exam:null
 };
 
-function loadData(){
-  try{
-    const saved=localStorage.getItem(KEY);
-    if(saved){
-      data={...data,...JSON.parse(saved)};
-    }
-  }catch(e){
-    console.log(e);
+
+/* =========================================
+   LOAD / SAVE
+========================================= */
+
+function load(){
+
+ try{
+
+  const x=localStorage.getItem(KEY);
+
+  if(x){
+   data={...data,...JSON.parse(x)};
   }
-}
 
-function saveData(){
-  localStorage.setItem(KEY,JSON.stringify(data));
-  renderAll();
-}
+ }catch(e){
+  console.log(e);
+ }
 
-function uid(){
-  return Date.now().toString(36)+Math.random().toString(36).slice(2);
-}
-
-function today(){
-  const d=new Date();
-  return d.toISOString().slice(0,10);
-}
-
-function formatDate(d){
-  if(!d)return "";
-  return new Date(d+"T00:00:00").toLocaleDateString("bn-BD",{
-    day:"numeric",month:"long",year:"numeric"
-  });
-}
-
-function toast(msg){
-  const t=document.getElementById("toast");
-  t.textContent=msg;
-  t.style.display="block";
-  setTimeout(()=>t.style.display="none",2500);
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+function save(){
+
+ localStorage.setItem(KEY,JSON.stringify(data));
+
+ renderAll();
+
+}
+
+
+/* =========================================
+   PAGE NAVIGATION
+========================================= */
 
 function showPage(id,btn){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  const page=document.getElementById(id);
-  if(page)page.classList.add("active");
 
-  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
-  if(btn)btn.classList.add("active");
+ document.querySelectorAll(".page")
+ .forEach(p=>p.classList.remove("active"));
 
-  window.scrollTo({top:0,behavior:"smooth"});
-  renderAll();
+ const page=document.getElementById(id);
+
+ if(page){
+  page.classList.add("active");
+ }
+
+ document.querySelectorAll(".nav-btn")
+ .forEach(b=>b.classList.remove("active"));
+
+ if(btn){
+  btn.classList.add("active");
+ }
+
+ document.getElementById("moreMenu")
+ .classList.remove("show");
+
+ window.scrollTo(0,0);
+
 }
 
 
-/* =========================
+function toggleMore(){
+
+ document.getElementById("moreMenu")
+ .classList.toggle("show");
+
+}
+
+
+function goMore(id){
+
+ showPage(id);
+
+ document.getElementById("moreMenu")
+ .classList.remove("show");
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+function toast(text){
+
+ const t=document.getElementById("toast");
+
+ t.textContent=text;
+ t.classList.add("show");
+
+ setTimeout(()=>{
+  t.classList.remove("show");
+ },2000);
+
+}
+
+
+/* =========================================
    DARK MODE
-========================= */
+========================================= */
 
 function toggleDark(){
-  data.dark=!data.dark;
-  document.body.classList.toggle("dark",data.dark);
-  document.getElementById("darkBtn").textContent=data.dark?"☀️":"🌙";
-  localStorage.setItem(KEY,JSON.stringify(data));
+
+ document.body.classList.toggle("dark");
+
+ localStorage.setItem(
+  "R_STUDY_DARK",
+  document.body.classList.contains("dark")
+ );
+
 }
 
-function applyDark(){
-  document.body.classList.toggle("dark",!!data.dark);
-  document.getElementById("darkBtn").textContent=data.dark?"☀️":"🌙";
-}
 
-
-/* =========================
-   SUBJECTS
-========================= */
+/* =========================================
+   SUBJECT
+========================================= */
 
 function addSubject(){
-  const name=document.getElementById("subjectName").value.trim();
-  const target=document.getElementById("subjectTarget").value.trim();
-  const minutes=Number(document.getElementById("subjectMinutes").value)||30;
 
-  if(!name){
-    toast("Subject name দিন");
-    return;
-  }
+ const name=document.getElementById("subjectName")
+ .value.trim();
 
-  data.subjects.push({
-    id:uid(),
-    name,
-    target,
-    minutes,
-    created:today()
-  });
+ const target=document.getElementById("subjectTarget")
+ .value.trim();
 
-  document.getElementById("subjectName").value="";
-  document.getElementById("subjectTarget").value="";
+ if(!name){
+  toast("Subject name লিখুন");
+  return;
+ }
 
-  saveData();
-  toast("Subject added ✅");
+ data.subjects.push({
+  id:Date.now(),
+  name,
+  target
+ });
+
+ document.getElementById("subjectName").value="";
+ document.getElementById("subjectTarget").value="";
+
+ save();
+
+ toast("Subject added ✅");
+
 }
+
 
 function deleteSubject(id){
-  if(!confirm("এই Subject delete করবেন?"))return;
-  data.subjects=data.subjects.filter(x=>x.id!==id);
-  saveData();
+
+ data.subjects=data.subjects.filter(
+  x=>x.id!==id
+ );
+
+ save();
+
+ toast("Subject deleted");
+
 }
 
-function editSubject(id){
-  const s=data.subjects.find(x=>x.id===id);
-  if(!s)return;
 
-  const name=prompt("Subject Name",s.name);
-  if(name===null)return;
+function renderSubjects(){
 
-  const target=prompt("Target",s.target||"");
-  if(target===null)return;
+ const box=document.getElementById("subjectList");
 
-  s.name=name.trim()||s.name;
-  s.target=target.trim();
+ if(!data.subjects.length){
 
-  saveData();
+  box.innerHTML=
+  '<div class="empty">📚 এখনো কোনো Subject নেই</div>';
+
+  return;
+
+ }
+
+ box.innerHTML=data.subjects.map(x=>`
+
+ <div class="item">
+
+  <div class="item-main">
+
+   <div class="item-title">
+    📚 ${safe(x.name)}
+   </div>
+
+   <div class="item-small">
+    🎯 ${safe(x.target||"Target নেই")}
+   </div>
+
+  </div>
+
+  <button class="small"
+  onclick="deleteSubject(${x.id})">
+   🗑️
+  </button>
+
+ </div>
+
+ `).join("");
+
 }
 
-functi
+
+/* =========================================
+   TASK
+========================================= */
+
+function addTask(){
+
+ const input=document.getElementById("taskInput");
+
+ const text=input.value.trim();
+
+ if(!text){
+  toast("Task লিখুন");
+  return;
+ }
+
+ data.tasks.push({
+  id:Date.now(),
+  text,
+  done:false,
+  date:today()
+ });
+
+ input.value="";
+
+ save();
+
+ toast("Task added ✅");
+
+}
+
+
+function toggleTask(id){
+
+ const task=data.tasks.find(x=>x.id===id);
+
+ if(!task)return;
+
+ task.done=!task.done;
+
+ save();
+
+}
+
+
+function deleteTask(id){
+
+ data.tasks=data.tasks.filter(x=>x.id!==id);
+
+ save();
+
+}
+
+
+function renderTasks(){
+
+ const box=document.getElementById("taskList");
+
+ if(!data.tasks.length){
+
+  box.innerHTML=
+  '<div class="empty">✅ কোনো Task নেই</div>';
+
+  return;
+
+ }
+
+ box.innerHTML=data.tasks.map(x=>`
+
+ <div class="item">
+
+  <div class="item-main">
+
+   <div class="item-title">
+    ${x.done?"✅":"⬜"} ${safe(x.text)}
+   </div>
+
+  </div>
+
+  <button class="small"
+  onclick="toggleTask(${x.id})">
+   ${x.done?"↩️":"✓"}
+  </button>
+
+  <button class="small"
+  onclick="deleteTask(${x.id})">
+   🗑️
+  </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================================
+   SCHEDULE
+========================================= */
+
+function addSchedule(){
+
+ const title=document.getElementById("scheduleTitle")
+ .value.trim();
+
+ const date=document.getElementById("scheduleDate").value;
+
+ const time=document.getElementById("scheduleTime").value;
+
+ if(!title||!date||!time){
+
+  toast("সব তথ্য দিন");
+
+  return;
+
+ }
+
+ data.schedules.push({
+  id:Date.now(),
+  title,
+  date,
+  time
+ });
+
+ document.getElementById("scheduleTitle").value="";
+ document.getElementById("scheduleDate").value="";
+ document.getElementById("scheduleTime").value="";
+
+ save();
+
+ toast("Schedule added 📅");
+
+}
+
+
+function deleteSchedule(id){
+
+ data.schedules=data.schedules.filter(
+  x=>x.id!==id
+ );
+
+ save();
+
+}
+
+
+function renderSchedules(){
+
+ const box=document.getElementById("scheduleList");
+
+ if(!data.schedules.length){
+
+  box.innerHTML=
+  '<div class="empty">📅 কোনো Schedule নেই</div>';
+
+  return;
+
+ }
+
+ const list=[...data.schedules]
+ .sort((a,b)=>
+  (a.date+a.time).localeCompare(b.date+b.time)
+ );
+
+ box.innerHTML=list.map(x=>`
+
+ <div class="item">
+
+  <div class="item-main">
+
+   <div class="item-title">
+    📅 ${safe(x.title)}
+   </div>
+
+   <div class="item-small">
+    ${x.date} • ${x.time}
+   </div>
+
+  </div>
+
+  <button class="small"
+  onclick="deleteSchedule(${x.id})">
+   🗑️
+  </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================================
+   TIMER
+========================================= */
+
+let timer={
+ mode:"study",
+ seconds:1500,
+ running:false,
+ interval:null,
+ study:25,
+ break:5
+};
+
+
+function formatTime(s){
+
+ const m=Math.floor(s/60)
+ .toString().padStart(2,"0");
+
+ const sec=(s%60)
+ .toString().padStart(2,"0");
+
+ return m+":"+sec;
+
+}
+
+
+function updateTimer(){
+
+ document.getElementById("timerDisplay")
+ .textContent=formatTime(timer.seconds);
+
+ document.getElementById("timerMode")
+ .textContent=
+ timer.mode==="study"
+ ?"📚 STUDY"
+ :"☕ BREAK";
+
+}
+
+
+function startTimer(){
+
+ if(timer.running)return;
+
+ timer.running=true;
+
+ timer.interval=setInterval(()=>{
+
+  timer.seconds--;
+
+  updateTimer();
+
+  if(timer.seconds<=0){
+
+   finishTimer();
+
+  }
+
+ },1000);
+
+ toast("Timer started ▶️");
+
+}
+
+
+function pauseTimer(){
+
+ timer.running=false;
+
+ clearInterval(timer.interval);
+
+ timer.interval=null;
+
+ toast("Timer paused ⏸️");
+
+}
+
+
+function resetTimer(){
+
+ pauseTimer();
+
+ timer.mode="study";
+
+ timer.seconds=timer.study*60;
+
+ updateTimer();
+
+}
+
+
+function skipTimer(){
+
+ pauseTimer();
+
+ switchTimer();
+
+}
+
+
+function switchTimer(){
+
+ if(timer.mode==="study"){
+
+  timer.mode="break";
+  timer.seconds=timer.break*60;
+
+ }else{
+
+  timer.mode="study";
+  timer.seconds=timer.study*60;
+
+ }
+
+ updateTimer();
+
+}
+
+
+function finishTimer(){
+
+ pauseTimer();
+
+ if(timer.mode==="study"){
+
+  data.studyMinutes+=timer.study;
+
+  updateStreak();
+
+  save();
+
+  speakAlarm(
+   "Study time শেষ। এখন Break Time।"
+  );
+
+ }else{
+
+  speakAlarm(
+   "Break time শেষ। আবার Study শুরু করুন।"
+  );
+
+ }
+
+ const auto=document.getElementById("autoCycle");
+
+ if(auto&&auto.checked){
+
+  switchTimer();
+
+ }else{
+
+  timer.mode="study";
+  timer.seconds=timer.study*60;
+
+  updateTimer();
+
+ }
+
+}
+
+
+function saveTimerSettings(){
+
+ let s=parseInt(
+  document.getElementById("studyInput").value
+ );
+
+ let b=parseInt(
+  document.getElementById("breakInput").value
+ );
+
+ if(!s||s<1)s=25;
+ if(!b||b<1)b=5;
+
+ timer.study=s;
+ timer.break=b;
+
+ resetTimer();
+
+ toast("Timer settings saved ✅");
+
+}
+
+
+function speakAlarm(text){
+
+ try{
+
+  const Audio=
+   window.AudioContext||
+   window.webkitAudioContext;
+
+  if(Audio){
+
+   const ctx=new Audio();
+
+   const osc=ctx.createOscillator();
+   const gain=ctx.createGain();
+
+   osc.connect(gain);
+   gain.connect(ctx.destination);
+
+   osc.frequency.value=850;
+   gain.gain.value=.25;
+
+   osc.start();
+
+   setTimeout(()=>{
+    osc.stop();
+   },900);
+
+  }
+
+ }catch(e){}
+
+ try{
+
+  if("speechSynthesis" in window){
+
+   const u=new SpeechSynthesisUtterance(text);
+
+   u.lang="bn-BD";
+
+   speechSynthesis.speak(u);
+
+  }
+
+ }catch(e){}
+
+ toast("🔔 "+text);
+
+}
+
+
+/* =========================================
+   STREAK
+========================================= */
+
+function updateStreak(){
+
+ const t=today();
+
+ if(data.lastStudy===t)return;
+
+ const d=new Date();
+
+ d.setDate(d.getDate()-1);
+
+ const yesterday=d.toISOString().slice(0,10);
+
+ if(data.lastStudy===yesterday){
+
+  data.streak++;
+
+ }else{
+
+  data.streak=1;
+
+ }
+
+ data.lastStudy=t;
+
+}
+
+
+/* =========================================
+   NOTES
+========================================= */
+
+function addNote(){
+
+ const title=document.getElementById("noteTitle")
+ .value.trim();
+
+ const text=document.getElementById("noteText")
+ .value.trim();
+
+ if(!title&&!text){
+
+  toast("Note লিখুন");
+
+  return;
+
+ }
+
+ data.notes.push({
+  id:Date.now(),
+  title:title||"Untitled",
+  text,
+  date:new Date().toLocaleDateString("bn-BD")
+ });
+
+ document.getElementById("noteTitle").value="";
+ document.getElementById("noteText").value="";
+
+ save();
+
+ toast("Note saved 📝");
+
+}
+
+
+function deleteNote(id){
+
+ data.notes=data.notes.filter(x=>x.id!==id);
+
+ save();
+
+}
+
+
+function renderNotes(){
+
+ const box=document.getElementById("noteList");
+
+ if(!data.notes.length){
+
+  box.innerHTML=
+  '<div class="empty">📝 কোনো Note নেই</div>';
+
+  return;
+
+ }
+
+ box.innerHTML=data.notes.map(x=>`
+
+ <div class="item">
+
+  <div class="item-main">
+
+   <div class="item-title">
+    📝 ${safe(x.title)}
+   </div>
+
+   <div class="item-small">
+    ${safe(x.text)}
+   </div>
+
+   <div class="item-small">
+    ${x.date}
+   </div>
+
+  </div>
+
+  <button class="small"
+  onclick="deleteNote(${x.id})">
+   🗑️
+  </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================================
+   REMINDER
+========================================= */
+
+function addReminder(){
+
+ const text=document.getElementById("reminderText")
+ .value.trim();
+
+ const date=document.getElementById("reminderDate").value;
+
+ const time=document.getElementById("reminderTime").value;
+
+ if(!text||!date||!time){
+
+  toast("Reminder-এর সব তথ্য দিন");
+
+  return;
+
+ }
+
+ data.reminders.push({
+  id:Date.now(),
+  text,
+  date,
+  time,
+  done:false
+ });
+
+ document.getElementById("reminderText").value="";
+
+ save();
+
+ toast("Reminder added 🔔");
+
+}
+
+
+function deleteReminder(id){
+
+ data.reminders=data.reminders.filter(
+  x=>x.id!==id
+ );
+
+ save();
+
+}
+
+
+function renderReminders(){
+
+ const box=document.getElementById("reminderList");
+
+ if(!data.reminders.length){
+
+  box.innerHTML=
+  '<div class="empty">🔔 কোনো Reminder নেই</div>';
+
+  return;
+
+ }
+
+ box.innerHTML=data.reminders.map(x=>`
+
+ <div class="item">
+
+  <div class="item-main">
+
+   <div class="item-title">
+    🔔 ${safe(x.text)}
+   </div>
+
+   <div class="item-small">
+    ${x.date} • ${x.time}
+   </div>
+
+  </div>
+
+  <button class="small"
+  onclick="deleteReminder(${x.id})">
+   🗑️
+  </button>
+
+ </div>
+
+ `).join("");
+
+}
+
+
+/* =========================================
+   EXAM
+========================================= */
+
+function saveExam(){
+
+ const name=document.getElementById("examName")
+ .value.trim();
+
+ const date=document.getElementById("examDate").value;
+
+ if(!name||!date){
+
+  toast("Exam name এবং date দিন");
+
+  return;
+
+ }
+
+ data.exam={name,date};
+
+ save();
+
+ toast("Exam saved ⏰");
+
+}
+
+
+function renderExam(){
+
+ const box=document.getElementById("examBox");
+
+ const dash=document.getElementById("dashboardExam");
+
+ if(!data.exam){
+
+  box.innerHTML="No exam set";
+
+  dash.innerHTML="No exam set";
+
+  return;
+
+ }
+
+ const target=new Date(
+  data.exam.date+"T00:00:00"
+ );
+
+ const now=new Date();
+
+ const diff=Math.ceil(
+  (target-now)/(1000*60*60*24)
+ );
+
+ const days=Math.max(0,diff);
+
+ box.innerHTML=`
+
+  <div>
+   <div style="font-size:18px">
+    📚 ${safe(data.exam.name)}
+   </div>
+
+   <div class="exam-days">
+    ${days}
+   </div>
+
+   <div>days remaining</div>
+
+   <div style="margin-top:8px">
+    📅 ${data.exam.date}
+   </div>
+  </div>
+
+ `;
+
+ dash.innerHTML=`
+
+  <b>📚 ${safe(data.exam.name)}</b>
+
+  <div style="font-size:32px;
+  font-weight:900;margin-top:8px">
+   ${days} days
+  </div>
+
+ `;
+
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+const quizzes=[
+
+ {
+  q:"HTML-এর পূর্ণরূপ কী?",
+  a:[
+   "Hyper Text Markup Language",
+   "High Text Machine Language",
+   "Hyper Tool Markup Language",
+   "Home Text Markup Language"
+  ],
+  correct:0
+ },
+
+ {
+  q:"CSS কী কাজে ব্যবহার করা হয়?",
+  a:[
+   "Database",
+   "Website Design",
+   "Server",
+   "Operating System"
+  ],
+  correct:1
+ },
+
+ {
+  q:"JavaScript কী?",
+  a:[
+   "Programming Language",
+   "Image",
+   "Database",
+   "Browser"
+  ],
+  correct:0
+ }
+
+];
+
+let quizIndex=0;
+let quizScore=0;
+let quizAnswered=false;
+
+
+function renderQuiz(){
+
+ const q=quizzes[quizIndex];
+
+ const box=document.getElementById("quizArea");
+
+ box.innerHTML=`
+
+  <div class="card-title">
+   প্রশ্ন ${quizIndex+1}/${quizzes.length}
+  </div>
+
+  <h2 style="margin-bottom:15px">
+   ${q.q}
+  </h2>
+
+  ${q.a.map((x,i)=>`
+
+   <button class="quiz-option"
+   onclick="answerQuiz(${i})"
+   id="q${i}">
+    ${String.fromCharCode(65+i)}. ${x}
+   </button>
+
+  `).join("")}
+
+ `;
+
+ document.getElementById("quizScore")
+ .textContent=quizScore;
+
+}
+
+
+function answerQuiz(index){
+
+ if(quizAnswered)return;
+
+ quizAnswered=true;
+
+ const q=quizzes[quizIndex];
+
+ const options=document.querySelectorAll(
+  ".quiz-option"
+ );
+
+ options.forEach((b,i)=>{
+
+  if(i===q.correct)
+   b.classList.add("correct");
+
+  if(i===index&&i!==q.correct)
+   b.classList.add("wrong");
+
+ });
+
+ if(index===q.correct){
+
+  quizScore++;
+
+  document.getElementById("quizScore")
+  .textContent=quizScore;
+
+  toast("সঠিক উত্তর 🎉");
+
+ }else{
+
+  toast("ভুল উত্তর");
+
+ }
+
+}
+
+
+function nextQuiz(){
+
+ quizIndex++;
+
+ if(quizIndex>=quizzes.length){
+
+  quizIndex=0;
+
+  toast(
+   "Quiz complete! Score: "+
+   quizScore+"/"+quizzes.length
+  );
+
+  quizScore=0;
+
+ }
+
+ quizAnswered=false;
+
+ renderQuiz();
+
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+function searchAll(){
+
+ const q=document.getElementById("searchInput")
+ .value.toLowerCase().trim();
+
+ const box=document.getElementById("searchResults");
+
+ if(!q){
+
+  box.innerHTML=
+  '<div class="empty">🔍 Search লিখুন</div>';
+
+  return;
+
+ }
+
+ let result=[];
+
+ data.subjects.forEach(x=>{
+
+  if(
+   x.name.toLowerCase().includes(q)||
+   x.target.toLowerCase().includes(q)
+  ){
+
+   result.push(
+    "📚 Subject: "+x.name
+   );
+
+  }
+
+ });
+
+ data.tasks.forEach(x=>{
+
+  if(x.text.toLowerCase().includes(q)){
+
+   result.push(
+    "✅ Task: "+x.text
+   );
+
+  }
+
+ });
+
+ data.notes.forEach(x=>{
+
+  if(
+   x.title.toLowerCase().includes(q)||
+   x.text.toLowerCase().includes(q)
+  ){
+
+   result.push(
+    "📝 Note: "+x.title
+   );
+
+  }
+
+ });
+
+ if(!result.length){
+
+  box.innerHTML=
+  '<div class="empty">কিছু পাওয়া যায়নি</div>';
+
+ }else{
+
+  box.innerHTML=result.map(x=>`
+
+   <div class="item">
+    ${safe(x)}
+   </div>
+
+  `).join("");
+
+ }
+
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+function todayTasks(){
+
+ return data.tasks.filter(
+  x=>x.date===today()
+ );
+
+}
+
+
+function getProgress(){
+
+ const tasks=todayTasks();
+
+ if(!tasks.length)return 0;
+
+ const done=tasks.filter(x=>x.done).length;
+
+ return Math.round(
+  done/tasks.length*100
+ );
+
+}
+
+
+function renderProgress(){
+
+ const p=getProgress();
+
+ document.getElementById("pMinutes")
+ .textContent=data.studyMinutes;
+
+ document.getElementById("pStreak")
+ .textContent=data.streak;
+
+ document.getElementById("pBar")
+ .style.width=p+"%";
+
+ document.getElementById("pPercent")
+ .textContent=p+"% complete";
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+function renderDashboard(){
+
+ const p=getProgress();
+
+ document.getElementById("dSubjects")
+ .textContent=data.subjects.length;
+
+ document.getElementById("dTasks")
+ .textContent=todayTasks().length;
+
+ document.getElementById("dMinutes")
+ .textContent=data.studyMinutes;
+
+ document.getElementById("dStreak")
+ .textContent=data.streak;
+
+ document.getElementById("dProgress")
+ .style.width=p+"%";
+
+ document.getElementById("dProgressText")
+ .textContent=p+"% complete";
+
+ let ach="Start studying to unlock achievements!";
+
+ if(data.studyMinutes>=25)
+  ach="🥉 First Study Session unlocked!";
+
+ if(data.studyMinutes>=60)
+  ach="🥈 1 Hour Focus unlocked!";
+
+ if(data.studyMinutes>=180)
+  ach="🥇 3 Hour Focus unlocked!";
+
+ if(data.streak>=7)
+  ach="🔥 7 Day Study Streak!";
+
+ document.getElementById("dAchievement")
+ .textContent=ach;
+
+ if(data.studyMinutes>0){
+
+  document.getElementById("dashboardReport")
+  .textContent=
+  "আজ "+data.studyMinutes+
+  " মিনিট পড়াশোনা করেছেন। চালিয়ে যান! 💪";
+
+ }else{
+
+  document.getElementById("dashboardReport")
+  .textContent=
+  "আজ এখনো কোনো Study Session নেই।";
+
+ }
+
+}
+
+
+/* =========================================
+   REPORT
+========================================= */
+
+function renderReport(){
+
+ const done=todayTasks()
+ .filter(x=>x.done).length;
+
+ document.getElementById("rSubjects")
+ .textContent=data.subjects.length;
+
+ document.getElementById("rTasks")
+ .textContent=done;
+
+ document.getElementById("rMinutes")
+ .textContent=data.studyMinutes;
+
+ document.getElementById("rStreak")
+ .textContent=data.streak;
+
+}
+
+
+/* =========================================
+   ACHIEVEMENT
+========================================= */
+
+function renderAchievements(){
+
+ let html="";
+
+ html+=achievementCard(
+  "🥉",
+  "First Study",
+  "২৫ মিনিট পড়ুন",
+  data.studyMinutes>=25
+ );
+
+ html+=achievementCard(
+  "🥈",
+  "1 Hour Focus",
+  "৬০ মিনিট পড়ুন",
+  data.studyMinutes>=60
+ );
+
+ html+=achievementCard(
+  "🥇",
+  "3 Hour Focus",
+  "১৮০ মিনিট পড়ুন",
+  data.studyMinutes>=180
+ );
+
+ html+=achievementCard(
+  "🔥",
+  "7 Day Streak",
+  "৭ দিন ধারাবাহিকভাবে পড়ুন",
+  data.streak>=7
+ );
+
+ document.getElementById("achievementList")
+ .innerHTML=html;
+
+}
+
+
+function achievementCard(icon,name,desc,done){
+
+ return `
+
+ <div class="item">
+
+  <div style="font-size:35px">
+   ${icon}
+  </div>
+
+  <div class="item-main">
+
+   <div class="item-title">
+    ${name}
+   </div>
+
+   <div class="item-small">
+    ${desc}
+   </div>
+
+  </div>
+
+  <div>
+   ${done?"✅":"🔒"}
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================
+   CALENDAR
+========================================= */
+
+function renderCalendar(){
+
+ const now=new Date();
+
+ const year=now.getFullYear();
+ const month=now.getMonth();
+ const todayDate=now.getDate();
+
+ const names=[
+  "January","February","March","April",
+  "May","June","July","August",
+  "September","October","November","December"
+ ];
+
+ document.getElementById("calendarMonth")
+ .textContent=names[month]+" "+year;
+
+ const box=document.getElementById("calendarBox");
+
+ let html="";
+
+ ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+ .forEach(x=>{
+  html+=`<div class="cal-head">${x}</div>`;
+ });
+
+ const first=new Date(year,month,1)
+ .getDay();
+
+ const total=new Date(year,month+1,0)
+ .getDate();
+
+ for(let i=0;i<first;i++){
+
+  html+="<div></div>";
+
+ }
+
+ for(let d=1;d<=total;d++){
+
+  const cls=d===todayDate
+   ?"cal-day cal-today"
+   :"cal-day";
+
+  html+=`
+   <div class="${cls}">
+    ${d}
+   </div>
+  `;
+
+ }
+
+ box.innerHTML=html;
+
+}
+
+
+/* =========================================
+   UTILITY
+========================================= */
+
+function today(){
+
+ return new Date()
+ .toISOString()
+ .slice(0,10);
+
+}
+
+
+function safe(value){
+
+ return String(value??"")
+ .replaceAll("&","&amp;")
+ .replaceAll("<","&lt;")
+ .replaceAll(">","&gt;")
+ .replaceAll('"',"&quot;")
+ .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================
+   RENDER ALL
+========================================= */
+
+function renderAll(){
+
+ renderSubjects();
+ renderTasks();
+ renderSchedules();
+ renderNotes();
+ renderReminders();
+ renderProgress();
+ renderDashboard();
+ renderReport();
+ renderAchievements();
+ renderExam();
+ renderCalendar();
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+load();
+
+if(
+ localStorage.getItem("R_STUDY_DARK")==="true"
+){
+ document.body.classList.add("dark");
+}
+
+document.getElementById("studyInput")
+.value=timer.study;
+
+document.getElementById("breakInput")
+.value=timer.break;
+
+updateTimer();
+renderQuiz();
+renderAll();
+
+
+/* =========================================
+   REMINDER CHECK
+========================================= */
+
+setInterval(()=>{
+
+ const now=new Date();
+
+ const date=now.toISOString().slice(0,10);
+
+ const time=now.toTimeString().slice(0,5);
+
+ data.reminders.forEach(r=>{
+
+  if(
+   !r.done &&
+   r.date===date &&
+   r.time===time
+  ){
+
+   r.done=true;
+
+   speakAlarm(r.text);
+
+   save();
+
+  }
+
+ });
+
+},30000);
+
+</script>
+
+</body>
+</html>
