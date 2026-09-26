@@ -2653,6 +2653,12 @@ setInterval(()=>{
 },30000);
 
 </script>
-
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/R-Study-/sw.js");
+    });
+  }
+</script>
 </body>
 </html>
